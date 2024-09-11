@@ -1,4 +1,7 @@
 # encoding: utf-8
+
+print('Call exps/example/yolox_voc/yolox_voc.py')
+
 import os
 
 from yolox.data import get_yolox_datadir
