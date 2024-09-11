@@ -1,6 +1,10 @@
 #!/usr/bin/env python3
 # -*- coding:utf-8 -*-
 # Copyright (c) Megvii, Inc. and its affiliates.
+
+
+print('Call yolox/data/data_argument.py')
+
 """
 Data augmentation functionality. Passed as callable transformations to
 Dataset classes.
@@ -17,8 +21,8 @@ import numpy as np
 
 from yolox.utils import xyxy2cxcywh
 
-
 def augment_hsv(img, hgain=5, sgain=30, vgain=30):
+    print('Call yolox/data/data_argument.py def augment_hsv')
     hsv_augs = np.random.uniform(-1, 1, 3) * [hgain, sgain, vgain]  # random gains
     hsv_augs *= np.random.randint(0, 2, 3)  # random selection of h, s, v
     hsv_augs = hsv_augs.astype(np.int16)
@@ -32,6 +36,7 @@ def augment_hsv(img, hgain=5, sgain=30, vgain=30):
 
 
 def get_aug_params(value, center=0):
+    print('Call yolox/data/data_argument.py def get_aug_params')
     if isinstance(value, float):
         return random.uniform(center - value, center + value)
     elif len(value) == 2:
@@ -51,6 +56,7 @@ def get_affine_matrix(
     shear=10,
 ):
     twidth, theight = target_size
+    print('Call yolox/data/data_argument.py def get_affine_matrix')
 
     # Rotation and Scale
     angle = get_aug_params(degrees)
@@ -80,6 +86,7 @@ def get_affine_matrix(
 
 
 def apply_affine_to_bboxes(targets, target_size, M, scale):
+    print('Call yolox/data/data_argument.py def apply_affine_to_bboxes')
     num_gts = len(targets)
 
     # warp corner points
@@ -121,6 +128,7 @@ def random_affine(
     shear=10,
 ):
     M, scale = get_affine_matrix(target_size, degrees, translate, scales, shear)
+    print('Call yolox/data/data_argument.py def andom_affine')
 
     img = cv2.warpAffine(img, M, dsize=target_size, borderValue=(114, 114, 114))
 
@@ -133,6 +141,7 @@ def random_affine(
 
 def _mirror(image, boxes, prob=0.5):
     _, width, _ = image.shape
+    print('Call yolox/data/data_argument.py def _mirror')
     if random.random() < prob:
         image = image[:, ::-1]
         boxes[:, 0::2] = width - boxes[:, 2::-2]
@@ -140,6 +149,7 @@ def _mirror(image, boxes, prob=0.5):
 
 
 def preproc(img, input_size, swap=(2, 0, 1)):
+    print('Call yolox/data/data_argument.py def preproc')
     if len(img.shape) == 3:
         padded_img = np.ones((input_size[0], input_size[1], 3), dtype=np.uint8) * 114
     else:
@@ -160,6 +170,7 @@ def preproc(img, input_size, swap=(2, 0, 1)):
 
 class TrainTransform:
     def __init__(self, max_labels=50, flip_prob=0.5, hsv_prob=1.0):
+        print('Call yolox/data/data_argument.py class TrainTransform')
         self.max_labels = max_labels
         self.flip_prob = flip_prob
         self.hsv_prob = hsv_prob

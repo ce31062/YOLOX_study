@@ -2,6 +2,9 @@
 # -*- coding:utf-8 -*-
 # Copyright (c) Megvii, Inc. and its affiliates.
 
+
+print('Call yolox/data/data_prefetcher.py')
+
 import torch
 
 
@@ -19,8 +22,10 @@ class DataPrefetcher:
         self.input_cuda = self._input_cuda_for_image
         self.record_stream = DataPrefetcher._record_stream_for_image
         self.preload()
+        print('Call yolox/data/data_prefetcher.py def __init__')
 
     def preload(self):
+        print('Call yolox/data/data_prefetcher.py def preload()')
         try:
             self.next_input, self.next_target, _, _ = next(self.loader)
         except StopIteration:
@@ -33,6 +38,7 @@ class DataPrefetcher:
             self.next_target = self.next_target.cuda(non_blocking=True)
 
     def next(self):
+        print('Call yolox/data/data_prefetcher.py def next()')
         torch.cuda.current_stream().wait_stream(self.stream)
         input = self.next_input
         target = self.next_target
@@ -44,8 +50,10 @@ class DataPrefetcher:
         return input, target
 
     def _input_cuda_for_image(self):
+        print('Call yolox/data/data_prefetcher.py def input_cuda_for_image()')
         self.next_input = self.next_input.cuda(non_blocking=True)
 
     @staticmethod
     def _record_stream_for_image(input):
+        print('Call yolox/data/data_prefetcher.py def _record_stream_for_image()')
         input.record_stream(torch.cuda.current_stream())

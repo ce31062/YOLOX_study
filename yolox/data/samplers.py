@@ -2,6 +2,8 @@
 # -*- coding:utf-8 -*-
 # Copyright (c) Megvii, Inc. and its affiliates.
 
+print('Call yolox/data/samplers.py')
+
 import itertools
 from typing import Optional
 
@@ -9,7 +11,6 @@ import torch
 import torch.distributed as dist
 from torch.utils.data.sampler import BatchSampler as torchBatchSampler
 from torch.utils.data.sampler import Sampler
-
 
 class YoloBatchSampler(torchBatchSampler):
     """
