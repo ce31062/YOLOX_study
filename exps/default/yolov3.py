@@ -2,6 +2,8 @@
 # -*- coding:utf-8 -*-
 # Copyright (c) Megvii, Inc. and its affiliates.
 
+print('Call exps/default/yolov3.py')
+
 import os
 
 import torch.nn as nn

@@ -2,12 +2,11 @@
 # -*- coding:utf-8 -*-
 # Copyright (c) Megvii, Inc. and its affiliates.
 
+print('Call exps/default/yolox_nano.py')
+
 import os
-
 import torch.nn as nn
-
 from yolox.exp import Exp as MyExp
-
 
 class Exp(MyExp):
     def __init__(self):

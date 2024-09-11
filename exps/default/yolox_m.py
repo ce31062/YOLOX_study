@@ -2,6 +2,8 @@
 # -*- coding:utf-8 -*-
 # Copyright (c) Megvii, Inc. and its affiliates.
 
+print('Call exps/default/yolox_m.py')
+
 import os
 
 from yolox.exp import Exp as MyExp
