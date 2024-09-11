@@ -41,6 +41,7 @@ class Exp(MyExp):
                 act=self.act, depthwise=True
             )
             self.model = YOLOX(backbone, head)
+            #print(self.model)
 
         self.model.apply(init_yolo)
         self.model.head.initialize_biases(1e-2)
