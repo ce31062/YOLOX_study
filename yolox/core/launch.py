@@ -5,6 +5,8 @@
 # Copyright (c) Facebook, Inc. and its affiliates.
 # Copyright (c) Megvii, Inc. and its affiliates.
 
+print('yolox/core/launch.py')
+
 import sys
 from datetime import timedelta
 from loguru import logger

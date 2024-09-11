@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 # Copyright (c) Megvii, Inc. and its affiliates.
 
+print('yolox/core/trainer.py')
+
 import datetime
 import os
 import time
