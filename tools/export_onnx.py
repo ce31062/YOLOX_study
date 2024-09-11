@@ -2,6 +2,8 @@
 # -*- coding:utf-8 -*-
 # Copyright (c) Megvii, Inc. and its affiliates.
 
+print("Call tools/export_onnx.py")
+
 import argparse
 import os
 from loguru import logger

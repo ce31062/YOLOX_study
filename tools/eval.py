@@ -2,6 +2,8 @@
 # -*- coding:utf-8 -*-
 # Copyright (c) Megvii, Inc. and its affiliates.
 
+print("Call tools/eval.py")
+
 import argparse
 import os
 import random

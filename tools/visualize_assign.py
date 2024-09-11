@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 # Copyright (c) Megvii, Inc. and its affiliates.
 
+print("Call tools/visualize_assign.py")
+
 import os
 import sys
 import random

@@ -2,6 +2,8 @@
 # -*- coding:utf-8 -*-
 # Copyright (c) Megvii, Inc. and its affiliates.
 
+print("Call tools/train.py")
+
 import argparse
 import random
 import warnings
