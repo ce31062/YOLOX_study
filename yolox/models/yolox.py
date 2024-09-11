@@ -2,7 +2,7 @@
 # -*- encoding: utf-8 -*-
 # Copyright (c) Megvii Inc. All rights reserved.
 
-print('Call yolox/models/yolo_pafpn.py')
+print('Call yolox/models/yolo.py')
 
 import torch.nn as nn
 
