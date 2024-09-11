@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 # Copyright (c) Megvii Inc. All rights reserved.
 
+print('Call yolox/exp/base_exp.py')
+
 import os
 import random
 
@@ -12,6 +14,7 @@ from .base_exp import BaseExp
 
 __all__ = ["Exp", "check_exp_value"]
 
+print('Call yolox/exp/yolo_base.py')
 
 class Exp(BaseExp):
     def __init__(self):

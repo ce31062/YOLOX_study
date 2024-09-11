@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 # Copyright (c) Megvii Inc. All rights reserved.
 
+print('Call yolox/exp/base_exp.py')
+
 import ast
 import pprint
 from abc import ABCMeta, abstractmethod

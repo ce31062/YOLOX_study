@@ -2,12 +2,15 @@
 # -*- coding:utf-8 -*-
 # Copyright (c) Megvii Inc. All rights reserved.
 
+print('Call yolox/exp/build.py')
+
 import importlib
 import os
 import sys
 
 
 def get_exp_by_file(exp_file):
+    print('Call yolox/exp/build.py/get_exp_by_file()')
     try:
         sys.path.append(os.path.dirname(exp_file))
         current_exp = importlib.import_module(os.path.basename(exp_file).split(".")[0])
@@ -18,6 +21,7 @@ def get_exp_by_file(exp_file):
 
 
 def get_exp_by_name(exp_name):
+    print('Call yolox/exp/build.py/get_exp_by_name()')
     exp = exp_name.replace("-", "_")  # convert string like "yolox-s" to "yolox_s"
     module_name = ".".join(["yolox", "exp", "default", exp])
     exp_object = importlib.import_module(module_name).Exp()
@@ -25,6 +29,7 @@ def get_exp_by_name(exp_name):
 
 
 def get_exp(exp_file=None, exp_name=None):
+    print('Call yolox/exp/build.py/get_exp()')
     """
     get Exp object by file or name. If exp_file and exp_name
     are both provided, get Exp by exp_file.
