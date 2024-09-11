@@ -1,6 +1,9 @@
 #!/usr/bin/env python3
 # -*- coding:utf-8 -*-
 # Copyright (c) Megvii, Inc. and its affiliates.
+
+print('Call yolox/data/datasets/coco.py')
+
 import copy
 import os
 
@@ -10,6 +13,7 @@ from pycocotools.coco import COCO
 
 from ..dataloading import get_yolox_datadir
 from .datasets_wrapper import CacheDataset, cache_read_img
+
 
 
 def remove_useless_info(coco):

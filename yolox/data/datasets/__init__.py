@@ -2,6 +2,8 @@
 # -*- coding:utf-8 -*-
 # Copyright (c) Megvii, Inc. and its affiliates.
 
+print('Call yolox/data/datasets/__init__.py')
+
 from .coco import COCODataset
 from .coco_classes import COCO_CLASSES
 from .datasets_wrapper import CacheDataset, ConcatDataset, Dataset, MixConcatDataset

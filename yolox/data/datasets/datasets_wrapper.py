@@ -2,6 +2,9 @@
 # -*- coding:utf-8 -*-
 # Copyright (c) Megvii, Inc. and its affiliates.
 
+print('Call yolox/data/datasets/datasets_wrapper.py')
+
+
 import bisect
 import copy
 import os
@@ -18,6 +21,7 @@ import numpy as np
 from torch.utils.data.dataset import ConcatDataset as torchConcatDataset
 from torch.utils.data.dataset import Dataset as torchDataset
 
+print('Call yolox/data/datasets/datasets_wrapper.py')
 
 class ConcatDataset(torchConcatDataset):
     def __init__(self, datasets):

@@ -2,6 +2,8 @@
 # -*- coding:utf-8 -*-
 # Copyright (c) Megvii, Inc. and its affiliates.
 
+print('Call yolox/data/datasets/coco_classes.py')
+
 COCO_CLASSES = (
     "person",
     "bicycle",

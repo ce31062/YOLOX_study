@@ -6,6 +6,9 @@
 # Copyright (c) Ellis Brown, Max deGroot.
 # Copyright (c) Megvii, Inc. and its affiliates.
 
+print('Call yolox/data/datasets/voc.py')
+
+
 import os
 import os.path
 import pickle

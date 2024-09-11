@@ -3,6 +3,9 @@
 # Copyright (c) Megvii, Inc. and its affiliates.
 
 # VOC_CLASSES = ( '__background__', # always index 0
+
+print('Call yolox/data/datasets/voc_classes.py')
+
 VOC_CLASSES = (
     "aeroplane",
     "bicycle",

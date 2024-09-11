@@ -2,6 +2,8 @@
 # -*- coding:utf-8 -*-
 # Copyright (c) Megvii, Inc. and its affiliates.
 
+print('Call yolox/data/datasets/mosaicdetection.py')
+
 import random
 
 import cv2
@@ -11,7 +13,6 @@ from yolox.utils import adjust_box_anns, get_local_rank
 
 from ..data_augment import random_affine
 from .datasets_wrapper import Dataset
-
 
 def get_mosaic_coordinate(mosaic_image, mosaic_index, xc, yc, w, h, input_h, input_w):
     # TODO update doc
