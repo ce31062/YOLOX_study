@@ -2,6 +2,8 @@
 # -*- coding:utf-8 -*-
 # Copyright (c) Megvii, Inc. and its affiliates.
 
+print('Call exps/example/custom/nano.py')
+
 import os
 
 import torch.nn as nn

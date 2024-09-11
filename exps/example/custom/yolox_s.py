@@ -1,6 +1,9 @@
 #!/usr/bin/env python3
 # -*- coding:utf-8 -*-
 # Copyright (c) Megvii, Inc. and its affiliates.
+
+print('Call exps/example/custom/yolox_s.py')
+
 import os
 
 from yolox.exp import Exp as MyExp
