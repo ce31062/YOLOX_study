@@ -5,6 +5,8 @@
 # Copyright (c) Facebook, Inc. and its affiliates. All Rights Reserved
 # Copyright (c) Megvii Inc. All rights reserved.
 
+print('yolox/layers/fast_coco_eval_api.py')
+
 import copy
 import time
 

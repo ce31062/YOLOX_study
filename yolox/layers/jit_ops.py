@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 # Copyright (c) Megvii, Inc. and its affiliates. All Rights Reserved
 
+print('yolox/layers/jit_ops.py')
+
 import glob
 import importlib
 import os
