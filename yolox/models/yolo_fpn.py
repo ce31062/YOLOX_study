@@ -2,12 +2,13 @@
 # -*- encoding: utf-8 -*-
 # Copyright (c) Megvii Inc. All rights reserved.
 
+print('Call yolox/models/yolo_fpn.py')
+
 import torch
 import torch.nn as nn
 
 from .darknet import Darknet
 from .network_blocks import BaseConv
-
 
 class YOLOFPN(nn.Module):
     """

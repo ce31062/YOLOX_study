@@ -2,10 +2,11 @@
 # -*- encoding: utf-8 -*-
 # Copyright (c) Megvii Inc. All rights reserved.
 
+print('Call yolox/models/darknet.py')
+
 from torch import nn
 
 from .network_blocks import BaseConv, CSPLayer, DWConv, Focus, ResLayer, SPPBottleneck
-
 
 class Darknet(nn.Module):
     # number of blocks from dark2 to dark5.

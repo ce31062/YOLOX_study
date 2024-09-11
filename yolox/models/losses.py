@@ -2,9 +2,10 @@
 # -*- encoding: utf-8 -*-
 # Copyright (c) Megvii Inc. All rights reserved.
 
+print('Call yolox/models/losses.py')
+
 import torch
 import torch.nn as nn
-
 
 class IOUloss(nn.Module):
     def __init__(self, reduction="none", loss_type="iou"):

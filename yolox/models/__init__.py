@@ -2,6 +2,8 @@
 # -*- coding:utf-8 -*-
 # Copyright (c) Megvii Inc. All rights reserved.
 
+print('Call yolox/models/__init__.py')
+
 from .build import *
 from .darknet import CSPDarknet, Darknet
 from .losses import IOUloss

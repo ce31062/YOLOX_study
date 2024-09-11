@@ -2,6 +2,8 @@
 # -*- coding:utf-8 -*-
 # Copyright (c) Megvii Inc. All rights reserved.
 
+print('Call yolox/models/yolo_head.py')
+
 import math
 from loguru import logger
 
@@ -13,7 +15,6 @@ from yolox.utils import bboxes_iou, cxcywh2xyxy, meshgrid, visualize_assign
 
 from .losses import IOUloss
 from .network_blocks import BaseConv, DWConv
-
 
 class YOLOXHead(nn.Module):
     def __init__(
