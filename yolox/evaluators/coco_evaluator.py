@@ -2,6 +2,8 @@
 # -*- coding:utf-8 -*-
 # Copyright (c) Megvii, Inc. and its affiliates.
 
+print('Call yolox/evaluators/coco_evaluator.py')
+
 import contextlib
 import io
 import itertools

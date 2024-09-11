@@ -2,6 +2,8 @@
 # -*- coding:utf-8 -*-
 # Copyright (c) Megvii, Inc. and its affiliates.
 
+print('Call yolox/evaluators/voc_evaluator.py')
+
 import sys
 import tempfile
 import time

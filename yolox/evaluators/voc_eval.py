@@ -4,6 +4,8 @@
 # Copyright (c) Bharath Hariharan.
 # Copyright (c) Megvii, Inc. and its affiliates.
 
+print('Call yolox/evaluators/VOC_eval.py')
+
 import os
 import pickle
 import xml.etree.ElementTree as ET
