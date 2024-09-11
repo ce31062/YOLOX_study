@@ -2,10 +2,18 @@
 # -*- coding:utf-8 -*-
 # Copyright (c) Megvii, Inc. and its affiliates.
 
+print("Call tools/demo.py")
+
+
 import argparse
 import os
 import time
 from loguru import logger
+
+# Import pycallgraph2
+from pycallgraph2 import PyCallGraph, Config
+from pycallgraph2.output import GraphvizOutput
+from pycallgraph2.globbing_filter import GlobbingFilter
 
 import cv2
 
@@ -20,6 +28,7 @@ IMAGE_EXT = [".jpg", ".jpeg", ".webp", ".bmp", ".png"]
 
 
 def make_parser():
+    print('Call def make_parser()')
     parser = argparse.ArgumentParser("YOLOX Demo!")
     parser.add_argument(
         "demo", default="image", help="demo type, eg. image, video and webcam"
@@ -87,6 +96,7 @@ def make_parser():
 
 
 def get_image_list(path):
+    print('Call def get_image_list(path)')
     image_names = []
     for maindir, subdir, file_name_list in os.walk(path):
         for filename in file_name_list:
@@ -109,6 +119,7 @@ class Predictor(object):
         fp16=False,
         legacy=False,
     ):
+        print('Call class Predictor(__init__)')
         self.model = model
         self.cls_names = cls_names
         self.decoder = decoder
@@ -130,6 +141,7 @@ class Predictor(object):
             self.model = model_trt
 
     def inference(self, img):
+        print('Call class Predictor(inference)')
         img_info = {"id": 0}
         if isinstance(img, str):
             img_info["file_name"] = os.path.basename(img)
@@ -166,6 +178,7 @@ class Predictor(object):
         return outputs, img_info
 
     def visual(self, output, img_info, cls_conf=0.35):
+        print('Call class Predictor(visual)')
         ratio = img_info["ratio"]
         img = img_info["raw_img"]
         if output is None:
@@ -185,6 +198,7 @@ class Predictor(object):
 
 
 def image_demo(predictor, vis_folder, path, current_time, save_result):
+    print('Call def image_demo()')
     if os.path.isdir(path):
         files = get_image_list(path)
     else:
@@ -207,6 +221,7 @@ def image_demo(predictor, vis_folder, path, current_time, save_result):
 
 
 def imageflow_demo(predictor, vis_folder, current_time, args):
+    print('Call def imageflow_demo()')
     cap = cv2.VideoCapture(args.path if args.demo == "video" else args.camid)
     width = cap.get(cv2.CAP_PROP_FRAME_WIDTH)  # float
     height = cap.get(cv2.CAP_PROP_FRAME_HEIGHT)  # float
@@ -242,6 +257,7 @@ def imageflow_demo(predictor, vis_folder, current_time, args):
 
 
 def main(exp, args):
+    print('Call def main()')
     if not args.experiment_name:
         args.experiment_name = exp.exp_name
 
@@ -314,7 +330,37 @@ def main(exp, args):
 
 
 if __name__ == "__main__":
-    args = make_parser().parse_args()
-    exp = get_exp(args.exp_file, args.name)
+   # コールグラフの出力ファイルを指定
+    graphviz = GraphvizOutput()
+    graphviz.output_file = 'yolox_demo.png'
 
-    main(exp, args)
+    # 高解像度のためのオプションを追加
+    graphviz.dot_args = ['-Gdpi=600']
+
+    # フィルタ設定：YOLOXディレクトリ内のコードのみをトレース
+    config = Config()
+    trace_filter = GlobbingFilter(
+        include=[
+            'yolox.*',   # YOLOX内部のコードのみ
+            'tools.*'    # toolsディレクトリのコード
+        ],
+        exclude=[
+            'torch.*',    # torchライブラリを除外
+            'cv2.*',      # cv2ライブラリを除外
+            'loguru.*',   # loguruを除外
+            'time.*' ,    # timeモジュールを除外
+            'os.*',	  # osモジュールを除外
+            'argparse.*' ,
+            'calendar.*' ,
+            'torchvision.*'
+#            'posixpath.*'
+        ]
+    )
+    config.trace_filter = trace_filter
+
+    # コールグラフの記録を開始
+    with PyCallGraph(output=graphviz, config=config):
+        args = make_parser().parse_args()
+        exp = get_exp(args.exp_file, args.name)
+
+        main(exp, args)
