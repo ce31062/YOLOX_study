@@ -1,6 +1,9 @@
 #!/usr/bin/env python3
 # Copyright (c) Megvii Inc. All rights reserved.
 # Please read docs/mlflow_integration.md for more details.
+
+print('Call yolox/utils/mlflow_logger.py')
+
 """
 Logging training runs with hyperparameter, datasets and trained models to MlFlow.
 Mlflow support Model Tracking, Experiment Tracking, and Model Registry.

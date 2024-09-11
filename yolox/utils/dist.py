@@ -9,6 +9,8 @@ This file contains primitives for multi-gpu communication.
 This is useful when doing distributed training.
 """
 
+print('Call yolox/utils/dist.py')
+
 import functools
 import os
 import pickle

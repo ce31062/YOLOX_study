@@ -2,6 +2,8 @@
 # -*- coding:utf-8 -*-
 # Copyright (c) Megvii Inc. All rights reserved.
 
+print('Call yolox/utils/visualize.py')
+
 import cv2
 import numpy as np
 

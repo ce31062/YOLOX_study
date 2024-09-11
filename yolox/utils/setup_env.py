@@ -2,6 +2,8 @@
 # -*- coding:utf-8 -*-
 # Copyright (c) Megvii Inc. All rights reserved.
 
+print('Call yolox/utils/setup_env.py')
+
 import os
 import subprocess
 from loguru import logger

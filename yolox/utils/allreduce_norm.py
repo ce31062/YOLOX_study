@@ -2,6 +2,8 @@
 # -*- coding:utf-8 -*-
 # Copyright (c) Megvii Inc. All rights reserved.
 
+print('Call yolox/utils/allreduce_norm.py')
+
 import pickle
 from collections import OrderedDict
 

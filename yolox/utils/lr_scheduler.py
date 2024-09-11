@@ -2,6 +2,8 @@
 # -*- coding:utf-8 -*-
 # Copyright (c) Megvii Inc. All rights reserved.
 
+print('Call yolox/utils/lr_schedule.py')
+
 import math
 from functools import partial
 

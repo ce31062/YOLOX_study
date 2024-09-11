@@ -2,6 +2,8 @@
 # -*- coding:utf-8 -*-
 # Copyright (c) Megvii Inc. All rights reserved.
 
+print('Call yolox/utils/model_utils.py')
+
 import contextlib
 from copy import deepcopy
 from typing import Sequence

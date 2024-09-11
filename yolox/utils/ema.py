@@ -1,6 +1,9 @@
 #!/usr/bin/env python3
 # -*- coding:utf-8 -*-
 # Copyright (c) Megvii Inc. All rights reserved.
+
+print('Call yolox/utils/ema.py')
+
 import math
 from copy import deepcopy
 

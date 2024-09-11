@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 # Copyright (c) Megvii Inc. All rights reserved.
 
+print('Call yolox/utils/demo_utils.py')
+
 import os
 import random
 

@@ -1,6 +1,9 @@
 #!/usr/bin/env python3
 # -*- coding:utf-8 -*-
 # Copyright (c) Megvii Inc. All rights reserved.
+
+print('Call yolox/utils/checkpoint.py')
+
 import os
 import shutil
 from loguru import logger
