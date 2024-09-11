@@ -2,6 +2,8 @@
 # -*- coding:utf-8 -*-
 # Copyright (c) Megvii, Inc. and its affiliates.
 
+print('Call tests/utils/test_model_utils.py')
+
 import unittest
 
 import torch
