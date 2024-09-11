@@ -3,10 +3,14 @@
 # Copyright (c) Megvii Inc. All rights reserved.
 
 # This file is used for package installation and find default exp file
+print('Call yolox/exp/default/__init__.py')
+
 
 import sys
 from importlib import abc, util
 from pathlib import Path
+
+
 
 _EXP_PATH = Path(__file__).resolve().parent.parent.parent.parent / "exps" / "default"
 
