@@ -24,6 +24,9 @@ from yolox.data.datasets import COCO_CLASSES
 from yolox.exp import get_exp
 from yolox.utils import fuse_model, get_model_info, postprocess, vis
 
+from torchinfo import summary
+from torchvision.models import resnet18
+
 IMAGE_EXT = [".jpg", ".jpeg", ".webp", ".bmp", ".png"]
 
 
@@ -284,6 +287,16 @@ def main(exp, args):
     model = exp.get_model()
     logger.info("Model Summary: {}".format(get_model_info(model, exp.test_size)))
 
+#    model = resnet18()
+    batch_size = 2
+
+    summary(
+        model,
+        input_size=(batch_size, 3, 224, 224),
+        col_names=["output_size", "num_params"],
+    )
+    
+
     if args.device == "gpu":
         model.cuda()
         if args.fp16:
@@ -357,6 +370,15 @@ if __name__ == "__main__":
         ]
     )
     config.trace_filter = trace_filter
+
+#    model = resnet18()
+#    batch_size = 2
+
+#    summary(
+#        model,
+#        input_size=(batch_size, 3, 224, 224),
+#        col_names=["output_size", "num_params"],
+#    )
 
     # コールグラフの記録を開始
     with PyCallGraph(output=graphviz, config=config):
