@@ -1,3 +1,6 @@
+## YOLOX-NANO
+<img src="yolox_demo.png" >
+
 <div align="center"><img src="assets/logo.png" width="350"></div>
 <img src="assets/demo.png" >
 
