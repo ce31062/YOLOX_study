@@ -287,17 +287,8 @@ def main(exp, args):
     model = exp.get_model()
     logger.info("Model Summary: {}".format(get_model_info(model, exp.test_size)))
 
-#    model = resnet18()
-    batch_size = 2
-
-    summary(
-        model,
-        input_size=(batch_size, 3, 224, 224),
-        col_names=["output_size", "num_params"],
-    )
-    
-
     if args.device == "gpu":
+        print("args.device==gpu")
         model.cuda()
         if args.fp16:
             model.half()  # to FP16
@@ -341,6 +332,15 @@ def main(exp, args):
     elif args.demo == "video" or args.demo == "webcam":
         imageflow_demo(predictor, vis_folder, current_time, args)
 
+    # torchinfo.summary
+    # batch_size = 1
+    # summary(
+    #     model,
+    #     input_size=(batch_size, 3, 416, 416),
+    #     col_names=["input_size", "output_size", "num_params", "mult_adds"],
+    #     # depth=2,
+    #     # row_settings=["var_names"]
+    # )
 
 if __name__ == "__main__":
    # コールグラフの出力ファイルを指定
@@ -353,11 +353,16 @@ if __name__ == "__main__":
     # フィルタ設定：YOLOXディレクトリ内のコードのみをトレース
     config = Config()
     trace_filter = GlobbingFilter(
-        include=[
-            'yolox.*',   # YOLOX内部のコードのみ
-            'tools.*'    # toolsディレクトリのコード
-        ],
-        exclude=[
+        # include=[ # コールグラフに含める関数、ライブラリ
+        #     'yolox.*',
+        #     'tools.*',
+        #     'exps.*',
+        #     'Predictor.*' ,
+        #     'demo.image_demo' ,
+        #     'demo.main' ,
+        #     '__main__' ,
+        # ],
+        exclude=[ # コールグラフから除外する関数、ライブラリ
             'torch.*',    # torchライブラリを除外
             'cv2.*',      # cv2ライブラリを除外
             'loguru.*',   # loguruを除外
@@ -365,20 +370,82 @@ if __name__ == "__main__":
             'os.*',	  # osモジュールを除外
             'argparse.*' ,
             'calendar.*' ,
-            'torchvision.*'
-#            'posixpath.*'
+            'torchvision.*',
+            'torchinfo.*',
+            'warnings.*' ,
+            'pycallgraph2.*',
+            'typing.*' ,
+            'importlib.*' ,
+            'enum.*' ,
+            'sre_parse.*' ,
+            'gettext.*' ,
+            'sre_compile.*' ,
+            'distutils.*' ,
+           'posixpath.*',
+           'pathlib.*' ,
+           'abc.*' ,
+           'copy.*' ,
+           'collections.*' ,
+           'thop.*' ,
+           're.*' ,
+           'shutil.*' ,
+           'contextlib.*' ,
+           'VFModule.*' ,
+           'copyto' ,
+           'linecache.*' ,
+           'ctypes.*' ,
+           'copyreg.*' ,
+           'inspect.*' ,
+           'locale.*' ,
+           'encodings.*' ,
+           '_find_spec' ,
+           'types.*' ,
+           'functools.*' ,
+           '_ImportLockContext.*' ,
+           'find_spec' ,
+           '_get_spec' ,
+           '_path_importer_cache' ,
+           'FileFinder.*' ,
+           '_path_hooks' ,
+           'path_hook_for_FileFinder' ,
+           'genericpath' ,
+           'SourceFileLoader.*' ,
+           '_relax_case' ,
+           '_classify_pyc' ,
+           '_validate_timestamp_pyc' ,
+           '_unpack_uint32',
+           '_path_isfile' ,
+           '_path_isdir' ,
+           '_load_unlocked' ,
+           'spec_from_file_location' ,
+           '_handle_fromlist' ,
+           '_find_and_load' ,
+           'module_from_spec' ,
+           '_path_is_mode_type' ,
+           'zipimporter.*' ,
+           '_path_stat' ,
+           'cb' ,
+           '_get_supported_file_loaders' ,
+           '_new_module' ,
+           '_path_isabs' ,
+           '_compile_bytecode',
+           '_ModuleLockManager.*' ,
+           '__gcd_import' ,
+           '_lock_unlock_module' ,
+           '_init_module_attrs' ,
+           '_gcd_import' ,
+           'ModuleSpec.*' ,
+           'mean' ,
+           '_get_cached' ,
+           'cache_from_source' ,
+           '_verbose_message' ,
+           '_path_join' ,
+           '_path_split' ,
+           '_find_and_load_unlocked' ,
+           '_call_with_frames_removed' ,
         ]
     )
     config.trace_filter = trace_filter
-
-#    model = resnet18()
-#    batch_size = 2
-
-#    summary(
-#        model,
-#        input_size=(batch_size, 3, 224, 224),
-#        col_names=["output_size", "num_params"],
-#    )
 
     # コールグラフの記録を開始
     with PyCallGraph(output=graphviz, config=config):
